@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Analysis Result - AI Resume Analyzer</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>📊 Your Resume Analysis</h1>
+    {% if job_role %}
+      <p class="subtitle">Tailored for: {{ job_role }}</p>
+    {% endif %}
+
+    <div class="result-box">
+      <pre>{{ analysis }}</pre>
+    </div>
+
+    <a href="/" class="back-link">⬅ Analyze another resume</a>
+  </div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>AI Resume Analyzer</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>📄 AI Resume Analyzer</h1>
+    <p class="subtitle">Upload your resume and get instant AI-powered feedback</p>
+
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        <div class="flash">
+          {% for message in messages %}
+            <p>{{ message }}</p>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <form action="/analyze" method="post" enctype="multipart/form-data">
+      <label for="resume">Upload Resume (PDF or TXT)</label>
+      <input type="file" name="resume" id="resume" accept=".pdf,.txt" required>
+
+      <label for="job_role">Target Job Role (optional)</label>
+      <input type="text" name="job_role" id="job_role" placeholder="e.g. Data Analyst">
+
+      <button type="submit">Analyze Resume</button>
+    </form>
+  </div>
+</body>
+</html>
